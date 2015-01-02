@@ -1,0 +1,57 @@
+<template name="listMock">
+<a href="{{pathFor 'newMock'}}" id="add-rest-mock" class="btn btn-primary tutorial tutorial-no-mock" title="">Add a new mock of type REST</a>
+<table id="rest-list-table" class="table tutorial tutorial-no-mock table-hover" data-trigger="manual" data-placement="top" data-content="This is the list of mocks defined in this space. As this space is brand new, no mock are found." data-original-title="" title="">
+<thead>
+	<tr>
+		<th>Status</th>
+		<th>Name</th>
+		<th>Path</th>
+		<th>Verb</th>
+		<th>Consumes</th>
+		<th>Produces</th>
+		<th></th>
+	</tr>
+</thead>
+<tbody id="rest-list-tbody" class="">
+{{#each mocks}}
+
+<tr><td>
+
+<!-- <span class="label label-success"><span class="glyphicon glyphicon-play"></span></span> -->
+<button rel="tooltip" title="" id="stop" type="button" class="btn btn-success btn-sm" data-loading-text="Loading..." data-original-title="Click to stop the mock"><span class="glyphicon glyphicon-play"></span> Started</button>
+
+</td>
+<td><a class="editMock" rel="tooltip" title="" href="#" data-original-title="Click to configure the mock"> {{displayName}} </a></td>
+<td>{{path}}</td>
+<td>{{verb}}</td>
+<td>*/*</td>
+<td>*/*</td>
+<td>
+	<div class="btn-group tutorial" data-trigger="manual" data-placement="left" data-content="Good. The mock is now started and it is available on the host http://demo1756009.mockable.io. You can get the mock's URL from the Action button. Click the Tutorial button on the top to end it.">
+		<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+			Actions <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<!-- <li class="dropdown-header">Actions</li> -->
+			<li class="disabled"><a id="start" href="#"><span class="glyphicon glyphicon-play"></span>
+					Start</a></li>
+			<li><a id="stop" href="#"><span class="glyphicon glyphicon-stop"></span>
+					Stop</a></li>
+			<li><a href="#space/demo1756009/rest/UAAAAAAAA"><span class="glyphicon glyphicon-wrench"></span>
+					Configure</a></li>
+			<li class="divider"></li>
+			<li><a id="copy-url" href="#"><span class="glyphicon glyphicon-book"></span>
+					Copy live URL to clipboard</a></li>
+			<li><a id="view-logs" href="#"><span class="glyphicon glyphicon-list"></span>
+					View logs</a></li>
+			<li class="divider"></li>
+			<li><a id="remove" href="#"><span class="glyphicon glyphicon-remove"></span>
+					Remove</a></li>
+		</ul>
+	</div>
+</td>
+</tr>
+{{/each}}
+</tbody>
+</table>
+</template>
