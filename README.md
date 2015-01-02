@@ -1,2 +1,2 @@
-meteor-scaffolding
+meteor-mocks
 ==================
