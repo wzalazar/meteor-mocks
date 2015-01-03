@@ -3,7 +3,6 @@ Meteor.publish('mocks', function() {
 });
 
 Meteor.publish('idMock', function(id) {
-    console.log(Mocks.find(id));
     return Mocks.find(id);
 });
 

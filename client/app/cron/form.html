@@ -1,0 +1,86 @@
+<template name="formCron">
+<div class="form-group{{#if afFieldIsInvalid name='displayName'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Name</label>
+  <div class="col-lg-10">
+	  {{> afFieldInput name='displayName' autofocus='' class="form-control tutorial" falseLabel="Yes"}}
+    {{#if afFieldIsInvalid name='displayName'}}
+      <span class="help-block">{{afFieldMessage name='displayName'}}</span>
+    {{/if}}
+  </div>
+</div>
+<div class="form-group{{#if afFieldIsInvalid name='schedule'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Schedule </label>
+  <div class="col-lg-10">
+	{{> afFieldInput name='schedule' autofocus='' class="form-control tutorial" falseLabel="Yes" placeholder="every 20 mins starting on the 7th min"}}
+  {{#if afFieldIsInvalid name='schedule'}}
+      <span class="help-block">{{afFieldMessage name='schedule'}}</span>
+  {{/if}}
+	(Examples: <a href="http://bunkat.github.io/later/parsers.html">Accept only text parser.</a>)
+  </div>
+  
+</div>
+
+<div class="form-group">
+  <label for="inputName" class="col-lg-2 control-label">Field </label>
+  <div class="col-lg-10">
+	<select class="form-control" id="fieldSelect">
+		{{#each keys}}
+			<option>{{this}}</option>
+		{{/each}}
+	</select>
+  </div>
+</div>
+
+<div class="form-group{{#if afFieldIsInvalid name='typeField'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Type </label>
+  <div class="col-lg-10">
+  {{> afFieldInput name='typeField' id="typeField" autofocus='' class="form-control tutorial" falseLabel="Yes" options=fieldOptions}}
+  {{#if afFieldIsInvalid name='typeField'}}
+      <span class="help-block">{{afFieldMessage name='typeField'}}</span>
+  {{/if}}
+  </div>
+</div>
+
+{{#if typeNumber}}
+<div class="form-group{{#if afFieldIsInvalid name='add'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Add</label>
+  <div class="col-lg-10">
+    {{> afFieldInput name='add' autofocus='' class="form-control tutorial" falseLabel="Yes"}}
+    {{#if afFieldIsInvalid name='add'}}
+      <span class="help-block">{{afFieldMessage name='add'}}</span>
+    {{/if}}
+  </div>
+</div>
+
+<div class="form-group{{#if afFieldIsInvalid name='less'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Less</label>
+  <div class="col-lg-10">
+    {{> afFieldInput name='less' autofocus='' class="form-control tutorial" falseLabel="Yes"}}
+    {{#if afFieldIsInvalid name='less'}}
+      <span class="help-block">{{afFieldMessage name='less'}}</span>
+    {{/if}}
+  </div>
+</div>
+
+<div class="form-group{{#if afFieldIsInvalid name='change'}} has-error{{/if}}">
+  <label for="inputName" class="col-lg-2 control-label">Change</label>
+  <div class="col-lg-10">
+    {{> afFieldInput name='change' autofocus='' class="form-control tutorial" falseLabel="Yes"}}
+    {{#if afFieldIsInvalid name='change'}}
+      <span class="help-block">{{afFieldMessage name='change'}}</span>
+    {{/if}}
+  </div>
+</div>
+{{/if}}
+
+
+{{> afFieldInput value=mock._id name='mockId' autofocus='' class="form-control tutorial" type="hidden"}}
+
+{{> afFieldInput id="field" name='field' autofocus='' class="form-control tutorial" type="hidden"}}
+
+<div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</div>
+</template>

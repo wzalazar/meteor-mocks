@@ -1,19 +1,16 @@
-<template name="listMock">
+<template name="listCrons">
 <a href="{{pathFor 'newMock'}}" id="add-rest-mock" class="btn btn-primary tutorial tutorial-no-mock" title="">Add a new mock of type REST</a>
 <table id="rest-list-table" class="table tutorial tutorial-no-mock table-hover" data-trigger="manual" data-placement="top" data-content="This is the list of mocks defined in this space. As this space is brand new, no mock are found." data-original-title="" title="">
 <thead>
 	<tr>
 		<th>Status</th>
 		<th>Name</th>
-		<th>Path</th>
-		<th>Verb</th>
-		<th>Consumes</th>
-		<th>Produces</th>
+		<th>Mock</th>
 		<th></th>
 	</tr>
 </thead>
 <tbody id="rest-list-tbody" class="">
-{{#each mocks}}
+{{#each crons}}
 
 <tr><td>
 {{#if status}}
@@ -23,11 +20,8 @@
 {{/if}}
 
 </td>
-<td><a class="editMock" rel="tooltip" title="" href="#" data-original-title="Click to configure the mock"> {{displayName}} </a></td>
-<td><a href="{{localhost}}/rest/{{path}}" target="_blank">{{path}}</a></td>
-<td>{{verb}}</td>
-<td>*/*</td>
-<td>*/*</td>
+<td><a class="editCron" rel="tooltip" title="" href="#" data-original-title="Click to configure the mock"> {{displayName}} </a></td>
+<td><a href="{{localhost}}/rest/{{path}}" target="_blank">{{mockId}}</a></td>
 <td>
 	<div class="btn-group tutorial" data-trigger="manual" data-placement="left" data-content="Good. The mock is now started and it is available on the host http://mocks.meteor.com/rest/{{path}}. You can get the mock's URL from the Action button. Click the Tutorial button on the top to end it.">
 		<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +33,7 @@
 					Start</a></li>
 			<li class="{{#if status}}{{else}}disabled{{/if}}"><a id="stop" href="#"><span class="glyphicon glyphicon-stop"></span>
 					Stop</a></li>
-			<li><a href="#" class="editMock"><span class="glyphicon glyphicon-wrench"></span>
+			<li><a href="#" class="editCron"><span class="glyphicon glyphicon-wrench"></span>
 					Configure</a></li>
 			<li class="divider"></li>
 			<li><a id="create-cron" href="#"><span class="glyphicon glyphicon-list"></span>

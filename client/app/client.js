@@ -77,6 +77,19 @@ Template.registerHelper("verbOptions", function() {
     ];
 });
 
+Template.registerHelper("fieldOptions", function() {
+    return [
+		{value:"number",label:"Number"},
+		{value:"date",label:"Date"},
+		{value:"boolean",label:"Boolean"},
+		{value:"text",label:"Text"}
+    ];
+});
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-Template.editMock.events({
+Template.formMock.events({
 	'click #content-type-predef': function(event){
 		var text= $(event.target).text();
 		$(".contentType").each(function(){

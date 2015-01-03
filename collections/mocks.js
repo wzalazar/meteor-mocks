@@ -1,6 +1,24 @@
 Schema = {};
 
 Schema.Mocks = new SimpleSchema({
+	dateCreated:{
+		type: Date,
+		autoValue: function(){  
+			if (this.isInsert) return new Date; 
+		}
+	},
+	userId:{
+		type: String,
+		autoValue: function(){  
+			if (this.isInsert) return Meteor.userId(); 
+		}
+	},
+	status:{
+		type: Boolean,
+		autoValue: function(){  
+			if (this.isInsert) return true; 
+		}
+	},
  	displayName:{
  		type: String,
  		label: "Display Name"
@@ -15,7 +33,7 @@ Schema.Mocks = new SimpleSchema({
 		allowedValues: ['GET','POST','PUT','PATCH','DELETE','OPTIONS']
 	},
 	responseStatus:{
-		type: String,
+		type: Number,
 		label: "Response Status"
 	},
 	contentType:{
@@ -29,7 +47,7 @@ Schema.Mocks = new SimpleSchema({
 		label: "Content-Encoding",
 		defaultValue: "UTF-8" 
 	},
-    responsebody: {
+    responseBody: {
         type: String,
         autoform: {
 		    rows: 10

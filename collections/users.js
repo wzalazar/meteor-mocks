@@ -95,6 +95,11 @@ Schema.User = new SimpleSchema({
         type: [String],
         optional: true,
         blackbox: true
+    },
+
+    mocks:{
+        type: [String],
+        optional: true
     }
 });
 

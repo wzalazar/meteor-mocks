@@ -1,0 +1,7 @@
+<template name="newCron">
+<a href="{{pathFor 'dashboard'}}" class="btn btn-primary tutorial tutorial-no-mock" title="">Return dashboard</a>
+<p>new cron</p>
+{{#autoForm collection="Crons" id="insertCronForm" type="insert" class="form-horizontal rest-form" role="form"}}
+  {{> formCron}}
+{{/autoForm}}
+</template>
