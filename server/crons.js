@@ -23,7 +23,7 @@ Meteor.methods({
    createCron: function(id){
       var cron= Crons.findOne(id);
       SyncedCron.add({
-        name: cron.displayName,
+        name: id,
         schedule: function(parser) {
           // parser is a later.parse object
           return parser.text(cron.schedule);
@@ -32,13 +32,20 @@ Meteor.methods({
           var cron= Crons.findOne(id);
           var mock= Mocks.findOne(cron.mockId);
           var JSONresponseBody= JSON.parse(mock.responseBody);
-          JSONresponseBody.one= JSONresponseBody.one + cron.add;
+          JSONresponseBody[cron.field] = JSONresponseBody[cron.field] + cron.add;
           Mocks.update({"_id":cron.mockId},{$set: { "responseBody" : JSON.stringify(JSONresponseBody) } });
-          console.log("cron");
+          
         }
       });
+      console.log("cron start ",id);
+      SyncedCron.start(id);
+    },
 
-      SyncedCron.start();
+    stopCron : function(id){
+       console.log("cron stop ",id);
+       console.log(SyncedCron);
+       SyncedCron.remove(id);
+       SyncedCron.stop(id);
     }
 });
 

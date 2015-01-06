@@ -20,14 +20,13 @@
   
 </div>
 
-<div class="form-group">
+<div class="form-group{{#if afFieldIsInvalid name='field'}} has-error{{/if}}">
   <label for="inputName" class="col-lg-2 control-label">Field </label>
   <div class="col-lg-10">
-	<select class="form-control" id="fieldSelect">
-		{{#each keys}}
-			<option>{{this}}</option>
-		{{/each}}
-	</select>
+		{{> afFieldInput name='field' autofocus='' class="form-control tutorial" falseLabel="Yes"}}
+    {{#if afFieldIsInvalid name='field'}}
+      <span class="help-block">{{afFieldMessage name='field'}}</span>
+    {{/if}}
   </div>
 </div>
 
@@ -76,7 +75,7 @@
 
 {{> afFieldInput value=mock._id name='mockId' autofocus='' class="form-control tutorial" type="hidden"}}
 
-{{> afFieldInput id="field" name='field' autofocus='' class="form-control tutorial" type="hidden"}}
+
 
 <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

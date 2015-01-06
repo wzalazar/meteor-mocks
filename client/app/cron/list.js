@@ -17,6 +17,9 @@ Template.listCrons.events({
 
 	'click #stop': function(){
 		Crons.update({'_id':this._id},{$set:{'status':false}});
+		Meteor.call('stopCron',this._id,function(result,err){
+			if (err) console.log(err);
+		})
 	}, 
 
 	'click #start': function(){
